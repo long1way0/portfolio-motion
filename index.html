@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ia7slV1mZ6Ey1JxJWcPE7qY6tyEYt1u1kKHjHl6ePmc=' 'sha256-BnZ73xnwusenOfdwt3uUDRzBbQo1f7mEvM8gGhxnfIM='; style-src https://fonts.googleapis.com 'sha256-NrKUyLvTvUSoTKG/b5lC9ph2qrEZgn+MSoOJjUSD7Qg='; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="description" content="Konstantin Burdin: motion designer. Showreel, experience, skills.">
+<meta name="referrer" content="no-referrer">
+<title>Konstantin Burdin Motion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: dark single-page portfolio. Sticky nav with RU/EN switch, dotted name, showreel, experience as rows, skills in columns, contact. */
+:root {
+  color-scheme: dark;
+  --bg: #060709;
+  --surface: #14161c;
+  --line: #262a35;
+  --fg: #eceef3;
+  --fg-dim: #98a0b3;
+  --ember: #4d84ff;
+  --glow: #8fb0ff;
+  --ice: #8fb0ff;
+  --font-display: "Unbounded", "Arial Black", sans-serif;
+  --font: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 16px; line-height: 1.65; padding-inline: 20px; }
+.wrap { max-width: 1040px; margin-inline: auto; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+#reel { scroll-margin-top: 84px; }
+.contact { scroll-margin-top: 20px; }
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes settle { from { opacity: 0; transform: translateY(24px) scale(0.985); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .intro .role { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s both; }
+  .intro h1.name { animation: settle 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.3s both; }
+  .about h2 { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.8s both; }
+  .about p:nth-of-type(1) { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 1s both; }
+  .about p:nth-of-type(2) { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 1.2s both; }
+  .about p:nth-of-type(3) { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 1.4s both; }
+  .reel { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 1.6s both; }
+}
+.band { margin-inline: -20px; padding: 0 20px 64px; background: var(--bg); color: var(--fg); }
+.band.end { padding-bottom: 0; }
+.band.light { --bg: #f3f4f7; --surface: #ffffff; --line: #c3c8d4; --fg: #0c0e13; --fg-dim: #323a4d; --glow: #2a5fe0; --ice: #2a5fe0; --ember: #2f66f0; }
+.band.light { font-weight: 500; }
+.band.light h2, .band.light h3 { font-weight: 700; }
+.band.light .edu dd.lv, .band.light .edu dt { font-weight: 500; }
+.band.light .edu dd.lv strong { font-weight: 800; }
+a { color: var(--ice); }
+:focus-visible { outline: 2px solid var(--ice); outline-offset: 3px; }
+
+nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: #141824; border-bottom: 1px solid var(--line); margin-inline: -20px; padding-inline: 20px; }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; flex-wrap: wrap; padding-block: 8px; }
+nav b { font-family: var(--font-display); font-weight: 700; font-size: 14px; }
+nav .right { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+nav a { color: var(--fg-dim); text-decoration: none; font-weight: 500; font-size: 15px; }
+nav a:hover { color: var(--fg); }
+button.lang { background: none; color: var(--fg); border: 1px solid var(--line); border-radius: 8px; font: inherit; font-weight: 700; font-size: 14px; padding: 3px 12px; cursor: pointer; }
+button.lang:hover { border-color: var(--ice); color: var(--ice); }
+
+.intro { padding-block: 64px 32px; display: grid; gap: 18px; }
+.intro .role { color: var(--ember); font-weight: 700; margin: 0; }
+.intro h1.name { line-height: 0; max-width: 1000px; margin: 0; }
+.intro h1.name canvas { display: block; max-width: 100%; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.intro .lead { max-width: 58ch; color: var(--fg-dim); font-size: 18px; margin: 0; }
+.meta { color: var(--fg-dim); font-size: 15px; margin: 0; }
+
+.reel { display: grid; gap: 10px; }
+.reel-frame { aspect-ratio: 16 / 9; max-width: 100%; border: 1px solid var(--line); border-radius: 10px; background: #000; overflow: hidden; }
+.reel-frame video { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; }
+
+section { padding-block: 72px 0; scroll-margin-top: 20px; }
+h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(22px, 3.2vw, 30px); letter-spacing: -0.02em; margin: 0 0 8px; text-wrap: balance; }
+.sub { color: var(--fg-dim); margin: 0 0 28px; }
+.about { padding-block: 64px 48px; }
+.about p { max-width: 64ch; margin: 0 0 16px; }
+
+.jobs { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.jobs li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 6px 32px; padding-block: 22px; border-bottom: 1px solid var(--line); }
+.jobs h3 { margin: 0; font-size: 18px; letter-spacing: -0.01em; }
+.jobs p { margin: 0; color: var(--fg-dim); max-width: 62ch; }
+
+.colstack { display: grid; gap: 24px; min-width: 0; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 24px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 24px; min-width: 0; }
+.panel h3 { margin: 0 0 14px; font-size: 18px; }
+.panel h4 { margin: 20px 0 8px; font-size: 15px; color: var(--glow); font-weight: 600; }
+.panel ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; }
+.panel li { font-size: 15px; color: var(--fg-dim); }
+.panel li::marker { color: var(--ember); }
+.tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.tools span { border: 1px solid var(--line); background: var(--surface); padding: 5px 14px; border-radius: 99px; font-size: 14px; font-weight: 500; }
+.tools span.learn { border-style: dashed; color: var(--fg-dim); background: transparent; }
+
+.games { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; padding: 0; list-style: none; }
+.games li { border: 1px solid var(--line); background: var(--surface); padding: 5px 14px; border-radius: 8px; font-size: 15px; font-weight: 500; }
+.gaming p { max-width: 64ch; margin: 0 0 12px; color: var(--fg-dim); }
+
+.edu { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 24px; margin-top: 24px; }
+.edu dt { color: var(--fg-dim); font-size: 14px; }
+.edu dd { margin: 2px 0 0; font-weight: 600; }
+.edu dl { margin: 0; min-width: 0; }
+.edu dd.lps { display: grid; gap: 10px; justify-items: start; font-weight: 400; }
+.lp { display: inline-flex; align-items: center; gap: 12px; padding: 8px 16px 8px 10px; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; }
+.lp .flag { width: 30px; height: 20px; border-radius: 3px; flex: none; box-shadow: 0 0 0 1px rgba(128, 128, 140, 0.35); }
+.lp strong { font-weight: 800; }
+.edu dd.lv { font-weight: 400; }
+.edu dd.lv strong { font-weight: 800; }
+
+.contact { padding-block: 72px 56px; }
+.contact ul { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 14px; }
+.contact li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; overflow-wrap: anywhere; }
+.contact li span { color: var(--fg-dim); min-width: 84px; font-size: 14px; }
+.copy { background: none; border: 1px solid var(--line); color: var(--fg-dim); font: inherit; font-size: 13px; border-radius: 6px; padding: 1px 10px; cursor: pointer; }
+.copy:hover { color: var(--fg); border-color: var(--fg-dim); }
+
+.cbtns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+.cbtn { display: flex; align-items: center; gap: 16px; padding: 20px 24px; border-radius: 12px; border: 0; font: inherit; text-decoration: none; cursor: pointer; min-width: 0; text-align: left; transition: transform .15s, filter .15s; }
+.cbtn:hover { transform: translateY(-2px); filter: brightness(1.06); }
+.cbtn svg { width: 36px; height: 36px; flex: none; }
+.cbtn.gm svg { width: 48px; }
+.cbtn.tg svg { width: 46px; height: 46px; margin-block: -5px; }
+.mapstrip { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 112px; margin-top: 16px; padding-inline: 24px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); text-decoration: none; color: var(--fg); }
+.mapstrip svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mapstrip .roads path { fill: none; stroke: var(--line); stroke-width: 6; }
+.mapstrip .roads .main { stroke: #2e3445; stroke-width: 10; }
+.mapstrip .water { fill: #16223a; }
+.mapstrip .halo { fill: rgba(77, 132, 255, 0.22); }
+.mapstrip .pin { fill: var(--ember); stroke: #fff; stroke-width: 2.5; }
+.mapstrip .ml { position: relative; display: grid; background: rgba(20, 22, 28, 0.82); padding: 8px 14px; border-radius: 8px; }
+.mapstrip .ml small { color: var(--fg-dim); font-size: 13px; line-height: 1.3; }
+.mapstrip .ml b { font-family: var(--font-display); font-weight: 500; font-size: 20px; }
+.mapstrip .mg { position: relative; color: var(--fg-dim); font-size: 13px; background: rgba(20, 22, 28, 0.82); padding: 4px 10px; border-radius: 6px; }
+.mapstrip:hover { border-color: var(--ice); }
+.cbtn .t { display: grid; min-width: 0; }
+.cbtn b { font-family: var(--font-display); font-weight: 500; font-size: 18px; }
+.cbtn small { font-size: 14px; overflow-wrap: anywhere; }
+.cbtn.tg { background: #27a7e7; color: #fff; }
+.cbtn.tg small { color: rgba(255, 255, 255, 0.88); }
+.cbtn.gm { background: #fff; color: #202124; }
+.cbtn.gm small { color: #5f6368; }
+@media (max-width: 640px) {
+  .cbtns { grid-template-columns: minmax(0, 1fr); }
+  .intro { padding-block-start: 44px; }
+  section { padding-block-start: 56px; }
+  nav .right { gap: 14px; }
+  nav ul { gap: 14px; }
+  .jobs li { grid-template-columns: minmax(0, 1fr); }
+}
+body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
+</style>
+
+</head><body><nav>
+  <div class="wrap">
+    <b>Konstantin Burdin</b>
+    <div class="right">
+      <ul>
+        <li><a href="#reel" data-ru="Шоурил">Showreel</a></li>
+        <li><a href="#experience" data-ru="Опыт">Experience</a></li>
+        <li><a href="#skills" data-ru="Навыки">Skills</a></li>
+        <li><a href="#contact" data-ru="Контакты">Contact</a></li>
+      </ul>
+      <button class="lang" id="lang" type="button" aria-label="Switch language">RU</button>
+    </div>
+  </div>
+</nav>
+
+<div class="band"><div class="wrap">
+  <header class="intro">
+    <p class="role" data-ru="Моушн-дизайнер · Vibe coding">Motion Designer · Vibe coding</p>
+    <h1 class="name"><span class="sr">Konstantin Burdin</span><canvas id="name" aria-hidden="true"></canvas></h1>
+  </header>
+  <script>
+  (function () {
+    var cv = document.getElementById('name'), ctx = cv.getContext('2d');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var dots = [], W = 0, H = 0, S = 7, R = 120, PUSH = 9, dpr = 1;
+    var ptr = null, lastMove = -1e9, raf = 0, started = false;
+    var LINES = ['Konstantin', 'Burdin'];
+    var FG = getComputedStyle(document.body).color || '#eceef3';
+
+    function build() {
+      var avail = Math.min(cv.parentElement.clientWidth, 1000);
+      var m = document.createElement('canvas').getContext('2d');
+      m.font = '700 100px Unbounded, "Arial Black", sans-serif';
+      var w100 = Math.max(m.measureText(LINES[0]).width, m.measureText(LINES[1]).width);
+      var fs = Math.min(avail / w100 * 100 * 0.98, 170);
+      W = Math.round(avail); H = Math.round(fs * 2.05);
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cv.width = W * dpr; cv.height = H * dpr;
+      cv.style.width = W + 'px'; cv.style.height = H + 'px';
+      S = Math.max(3, Math.round(fs / 26)); R = fs * 0.95; PUSH = fs / 15;
+      var o = document.createElement('canvas'); o.width = W; o.height = H;
+      var oc = o.getContext('2d');
+      oc.fillStyle = '#fff'; oc.textBaseline = 'alphabetic';
+      oc.font = '700 ' + fs + 'px Unbounded, "Arial Black", sans-serif';
+      oc.fillText(LINES[0], 0, fs * 0.9);
+      oc.fillText(LINES[1], 0, fs * 1.95);
+      var d = oc.getImageData(0, 0, W, H).data;
+      dots = [];
+      for (var y = S / 2; y < H; y += S) {
+        for (var x = S / 2; x < W; x += S) {
+          if (d[((y | 0) * W + (x | 0)) * 4 + 3] > 128) dots.push({ x: x, y: y, g: 0, ox: 0, oy: 0, r: Math.random() });
+        }
+      }
+    }
+
+    function frame(t) {
+      var auto = t - lastMove > 2200, px, py;
+      if (auto) {
+        var k = ((t / 1000) % 6) / 6;
+        px = W * (k * 1.3 - 0.15); py = H * (0.5 + 0.22 * Math.sin(k * 9));
+      } else if (ptr) { px = ptr.x; py = ptr.y; } else { px = -1e4; py = -1e4; }
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = FG;
+      ctx.beginPath();
+      for (var i = 0; i < dots.length; i++) {
+        var p = dots[i], dx = p.x - px, dy = p.y - py, dist = Math.sqrt(dx * dx + dy * dy);
+        var u = Math.max(0, 1 - dist / R), infl = u * u * (3 - 2 * u);
+        p.g += (infl - p.g) * 0.14;
+        var push = infl * (1 - infl) * 4 * PUSH * (0.5 + p.r * 1.4);
+        var nx = dist > 0.01 ? dx / dist : 0, ny = dist > 0.01 ? dy / dist : 0;
+        p.ox += (nx * push - p.ox) * 0.22; p.oy += (ny * push - p.oy) * 0.22;
+        var rad = S * (0.27 + 0.5 * p.g);
+        var cx = p.x + p.ox, cy = p.y + p.oy;
+        ctx.moveTo(cx + rad, cy); ctx.arc(cx, cy, rad, 0, 6.2832);
+      }
+      ctx.fill();
+      raf = requestAnimationFrame(frame);
+    }
+
+    function staticDraw() {
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = FG; ctx.beginPath();
+      for (var i = 0; i < dots.length; i++) { var p = dots[i], rad = S * 0.72; ctx.moveTo(p.x + rad, p.y); ctx.arc(p.x, p.y, rad, 0, 6.2832); }
+      ctx.fill();
+    }
+
+    function setPtr(e) {
+      var r = cv.getBoundingClientRect();
+      ptr = { x: e.clientX - r.left, y: e.clientY - r.top }; lastMove = performance.now();
+    }
+    cv.addEventListener('pointermove', setPtr);
+    cv.addEventListener('pointerdown', setPtr);
+    cv.addEventListener('pointerleave', function () { ptr = null; lastMove = performance.now() - 1500; });
+    cv.style.touchAction = 'pan-y';
+
+    function start() {
+      if (started) return; started = true;
+      build();
+      if (reduce) { staticDraw(); window.addEventListener('resize', function () { build(); staticDraw(); }); return; }
+      raf = requestAnimationFrame(frame);
+      var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(build, 150); });
+    }
+    var fl = document.fonts && document.fonts.load ? document.fonts.load('700 100px Unbounded') : Promise.resolve();
+    fl.then(start, start);
+    setTimeout(start, 2500);
+  })();
+  </script>
+
+  <div class="about" id="about">
+    <h2 data-ru="Обо мне">About</h2>
+    <p data-ru="В 13 лет заинтересовался графикой и монтажом, освоил базовые принципы анимации, но пока не знал, где их применить. Со временем я попробовал много направлений и понял, что больше всего меня цепляет движение, поэтому ушёл в моушн-графику.">At 13 I got into graphics and video editing and picked up the basic principles of animation, but didn't yet know where to apply them. Over time I tried many directions and realized that movement is what hooks me most, so I moved into motion graphics.</p>
+    <p data-ru="Сейчас я моушн-дизайнер: делаю анимацию, промо и визуалы для брендов, digital-продуктов и ивентов. Базово разбираюсь в UX/UI, поэтому понимаю, как анимация работает внутри интерфейса и помогает пользователю. В работе использую Claude Code и Codex: собираю с их помощью проекты и автоматизирую рутину, чтобы больше времени уходило на саму графику.">I'm a motion designer now: I make animation, promo and visuals for brands, digital products and events. I have a basic grasp of UX/UI, so I understand how animation works inside an interface and helps the user. I use Claude Code and Codex at work: I build projects with them and automate routine, so more time goes into the graphics itself.</p>
+  </div>
+
+  <div class="reel" id="reel">
+    <div class="reel-frame">
+      <video controls playsinline preload="metadata" poster="reel-poster.jpg" aria-label="Showreel 2026">
+        <source src="reel.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+</div></div>
+<div class="band light"><div class="wrap">
+  <section id="experience">
+    <h2 data-ru="Опыт работы">Experience</h2>
+    <p class="sub" data-ru="Фриланс моушн-дизайнер, 2024 – настоящее время">Freelance Motion Designer, 2024 to present</p>
+    <ul class="jobs">
+      <li>
+        <h3 data-ru="Графика для ивентов">Event graphics</h3>
+        <p data-ru="Визуальный стиль и анимированные анонсы для серии мероприятий на 200 гостей: от концепции и типографики до 3D-логотипа и финальной анимации в едином стиле.">Visual style and animated announcements for an event series with 200 guests: from concept and typography to a 3D logo and final animation in a unified style.</p>
+      </li>
+      <li>
+        <h3 data-ru="Анимация логотипа">Logo animation</h3>
+        <p data-ru="Анимированный логотип для бренда: подготовка исходников, раскадровка движения, динамичное появление логотипа с акцентом на «удар» в финале, световые и динамические эффекты, саунд-дизайн под анимацию.">Animated logo for a brand: asset preparation, motion storyboarding, a dynamic logo reveal with an emphasis on an "impact" in the finale, light and dynamic effects, sound design for the animation.</p>
+      </li>
+      <li>
+        <h3 data-ru="Промо для SaaS / EdTech">SaaS / EdTech promo</h3>
+        <p data-ru="Промо-ролик IT-курса: сценарий, записи экрана, геймплей, звукозапись и саунд-дизайн.">Promo video for an IT course: script, screen recordings, gameplay, sound recording and sound design.</p>
+      </li>
+      <li>
+        <h3 data-ru="Концертные визуалы">Concert visuals</h3>
+        <p data-ru="Цикличные фоны для экранов на сцене: процедурная анимация, органичные текстуры, глитч, дисплейс-эффекты.">Looping backgrounds for stage screens: procedural animation, organic textures, glitch, displacement effects.</p>
+      </li>
+      <li>
+        <h3 data-ru="Эфирная графика">Broadcast graphics</h3>
+        <p data-ru="Плашки соцсетей с цикличной анимацией и альфа-каналом для стримов.">Social media lower thirds with looping animation and an alpha channel for streams.</p>
+      </li>
+      <li>
+        <h3 data-ru="Контент для соцсетей">Social media content</h3>
+        <p data-ru="Reels со сценарием, таймингом панчлайна и брендированными концовками.">Reels with a script, punchline timing and branded endings.</p>
+      </li>
+    </ul>
+  </section>
+
+</div></div>
+<div class="band"><div class="wrap">
+  <section id="skills">
+    <h2 data-ru="Навыки">Skills</h2>
+    <p class="sub" data-ru="С чем и как я работаю.">What I work with and how.</p>
+    <div class="cols">
+      <div class="panel">
+        <h3 data-ru="Моушн и VFX">Motion &amp; VFX</h3>
+        <ul>
+          <li data-ru="Тайминг, easing и «удар»: подготовка движения (anticipation), чёткий акцент и мягкое затухание в коротких анимациях">Timing, easing and "impact": anticipation, a clear accent and a soft fade-out in short animations</li>
+          <li data-ru="Стилизованные 2D-эффекты: строю эффект из формы, света, текстуры и деформации, управляю энергией и ритмом вспышки, держу читаемость главного объекта и единый стиль с остальной графикой">Stylized 2D effects: I build an effect from shape, light, texture and deformation, control the energy and rhythm of a flash, keep the main object readable and the style consistent with the rest of the graphics</li>
+          <li data-ru="Разные типы эффектов: от световых и энергетических до эффектов появления, исчезновения и разрушения объектов">Different types of effects: from light and energy effects to reveal, disappear and destruction effects</li>
+          <li data-ru="Цикличные анимации без заметного шва">Looping animations without a visible seam</li>
+          <li data-ru="Работа со звуком и визуализация звука: подбор саунд-дизайна под анимацию, синхронизация движения с битом и акцентами трека">Audio work and sound visualization: choosing sound design for the animation, syncing motion to the beat and track accents</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3 data-ru="After Effects">After Effects</h3>
+        <ul>
+          <li data-ru="Сложный композитинг: многослойные сцены, прекомпозиции, режимы наложения, работа с альфа-каналом">Complex compositing: multi-layer scenes, precomps, blend modes, working with alpha channels</li>
+          <li data-ru="Процедурная анимация и базовые выражения для автоматизации движения">Procedural animation and basic expressions to automate motion</li>
+          <li data-ru="Иерархии слоёв и контроллеры для управления сложной анимацией">Layer hierarchies and controllers to manage complex animation</li>
+          <li data-ru="Трекинг и встраивание графики в видео, ротоскоп и маскинг">Tracking and integrating graphics into video, rotoscoping and masking</li>
+          <li data-ru="Генеративные и процедурные эффекты для живого, органичного движения">Generative and procedural effects for lively, organic motion</li>
+          <li data-ru="Оптимизация проектов и экспорт под разные платформы и форматы">Project optimization and export for different platforms and formats</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3 data-ru="Vibe coding">Vibe coding</h3>
+        <ul>
+          <li data-ru="Собираю проекты с Claude Code и Codex: от идеи и ТЗ для ИИ до рабочего результата">I build projects with Claude Code and Codex: from an idea and a brief for the AI to a working result</li>
+          <li data-ru="Веб-страницы и интерактивные прототипы с анимацией: лендинги, портфолио, презентации">Web pages and interactive prototypes with animation: landing pages, portfolios, presentations</li>
+          <li data-ru="Скрипты и автоматизация рутины в моушн-пайплайне: обработка файлов, экспорт, сортировка исходников">Scripts and automation of routine work in the motion pipeline: file processing, export, sorting source files</li>
+          <li data-ru="Связка моушна и кода: переношу анимацию из After Effects в веб и интерфейсы">Motion plus code: I bring animation from After Effects into web and interfaces</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3 data-ru="Цвет и композитинг">Color &amp; compositing</h3>
+        <ul>
+          <li data-ru="Цветокоррекция и стилизация в DaVinci Resolve">Color grading and stylization in DaVinci Resolve</li>
+          <li data-ru="Маски и релайтинг по карте глубины">Masking and depth-map-based relighting</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3 data-ru="Дизайн">Design</h3>
+        <ul>
+          <li data-ru="Типографика и композиция">Typography and composition</li>
+          <li data-ru="Базовое понимание UX/UI: логика интерфейсов, анимация состояний и переходов">Basic understanding of UX/UI: interface logic, animation of states and transitions</li>
+          <li data-ru="Цвет и стилизация (комплементарные палитры, кинематографичная цветокоррекция)">Color and stylization (complementary palettes, cinematic grading)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tools" aria-label="Tools">
+      <span>After Effects</span><span>Photoshop</span><span>Illustrator</span><span>Premiere Pro</span><span>DaVinci Resolve</span><span>Claude Code</span><span>Codex</span>
+    </div>
+  </section>
+
+</div></div>
+<div class="band light"><div class="wrap">
+  <section id="education">
+    <h2 data-ru="Образование и языки">Education &amp; languages</h2>
+    <div class="edu">
+      <dl><dt data-ru="Образование">Education</dt><dd data-ru="СПбГУТ им. проф. М. А. Бонч-Бруевича, специальность «Аудиовизуальная техника»">Bonch-Bruevich Saint Petersburg State University of Telecommunications (SPbSUT), specialty: Audiovisual Engineering</dd></dl>
+      <dl><dt data-ru="Языки">Languages</dt><dd class="lps"><span class="lp"><svg class="flag" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><rect y="6.67" width="30" height="6.67" fill="#0039a6"/><rect y="13.33" width="30" height="6.67" fill="#d52b1e"/></svg><span data-ru="Русский — <strong>C2</strong>">Russian — <strong>C2</strong></span></span><span class="lp"><svg class="flag" viewBox="0 0 60 30" aria-hidden="true"><clipPath id="fs"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="ft"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#fs)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ft)" stroke="#c8102e" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#c8102e" stroke-width="6"/></g></svg><span data-ru="Английский — <strong>B1</strong>">English — <strong>B1</strong></span></span></dd></dl>
+    </div>
+  </section>
+
+</div></div>
+<div class="band end"><div class="wrap">
+  <footer class="contact" id="contact">
+    <h2 data-ru="Контакты">Contact</h2>
+    <div class="cbtns">
+      <a class="cbtn tg" href="https://t.me/long1way0" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+        <span class="t"><b>Telegram</b><small>@long1way0</small></span>
+      </a>
+      <button class="cbtn gm" id="mail" type="button">
+        <svg viewBox="52 42 88 66" aria-hidden="true"><path fill="#4285f4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"/><path fill="#34a853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"/><path fill="#fbbc04" d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"/><path fill="#ea4335" d="M72 74V48l24 18 24-18v26L96 92"/><path fill="#c5221f" d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"/></svg>
+        <span class="t"><b>Gmail</b><small id="mailtxt"></small></span>
+      </button>
+    </div>
+    <a class="mapstrip" href="https://www.google.com/maps/place/Nha+Trang,+Khanh+Hoa,+Vietnam" target="_blank" rel="noopener noreferrer" aria-label="Nha Trang on Google Maps">
+      <svg viewBox="0 0 1000 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g class="roads"><path d="M0 30 H1000 M0 92 H1000 M120 0 V120 M310 0 V120 M520 0 V120 M760 0 V120 M900 0 V120"/><path class="main" d="M0 104 C180 70 300 80 430 52 S700 18 1000 40"/><path d="M590 120 L700 0 M0 60 L240 0"/></g>
+        <path class="water" d="M0 120 C120 100 160 112 260 108 S420 120 500 120 Z"/>
+        <g transform="translate(838 58)"><circle class="halo" r="22"/><circle class="pin" r="8"/></g>
+      </svg>
+      <span class="ml"><small data-ru="Локация">Location</small><b data-ru="Нячанг">Nha Trang</b></span>
+      <span class="mg">Google Maps</span>
+    </a>
+  </footer>
+</div></div>
+
+<script>
+(function () {
+  var lang = 'en', btn = document.getElementById('lang');
+  var nodes = document.querySelectorAll('[data-ru]');
+  nodes.forEach(function (n) { n.setAttribute('data-en', n.innerHTML); });
+  var video = document.querySelector('video');
+
+  function apply(l) {
+    lang = l;
+    nodes.forEach(function (n) { n.innerHTML = n.getAttribute(l === 'ru' ? 'data-ru' : 'data-en'); });
+    document.documentElement.lang = l;
+    btn.textContent = l === 'ru' ? 'EN' : 'RU';
+    btn.setAttribute('aria-label', l === 'ru' ? 'Switch to English' : 'Переключить на русский');
+    try { localStorage.setItem('lang', l); } catch (e) {}
+  }
+  btn.addEventListener('click', function () { apply(lang === 'ru' ? 'en' : 'ru'); });
+  try { if (localStorage.getItem('lang') === 'ru') apply('ru'); } catch (e) {}
+
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('nav a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var t = document.getElementById(a.getAttribute('href').slice(1));
+      if (!t) return;
+      e.preventDefault();
+      try { t.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' }); } catch (err) { t.scrollIntoView(); }
+    });
+  });
+
+  var mail = document.getElementById('mail'), mt = document.getElementById('mailtxt');
+  var v = ['long1way0', '@', 'gmail', '.com'].join('');
+  mt.textContent = v;
+  mail.addEventListener('click', function () {
+    function done() { mt.textContent = lang === 'ru' ? 'Адрес скопирован' : 'Address copied'; setTimeout(function () { mt.textContent = v; }, 1600); }
+    try { navigator.clipboard.writeText(v).then(done, function () {}); } catch (e) {}
+  });
+})();
+</script>
+</body></html>
