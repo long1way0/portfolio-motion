@@ -1,0 +1,317 @@
+{
+ "demo": false,
+ "projects": [
+  {
+   "id": "pmvgu23i1rtze",
+   "title": {
+    "ru": "Higgsfield SuperComputer",
+    "en": "Higgsfield SuperComputer"
+   },
+   "brief": {
+    "ru": "Задача от Higgsfield: 30-секундный промо-ролик SuperComputer, который почти без слов объясняет, как работает AI-агент.\nНапряжённое совещание заканчивается одним запросом в SuperComputer, и мы попадаем внутрь. Стеклянная лента агента анализирует сайты, выбирает лучшие модели, обновляет три слоя памяти, запускает рекурсивный цикл инструментов и выдаёт готовый интерфейс. Финал: «Describe what you want.»\n30 сек, монтаж по сетке трека 173 BPM.",
+    "en": "Brief from Higgsfield: a 30-second, almost wordless promo for SuperComputer that shows how an AI agent works.\nA tense meeting ends with a single prompt to SuperComputer, and we drop inside it. A glass ribbon, the agent, scans websites, picks the top models, updates three layers of memory, runs a recursive tool loop and delivers a finished interface. Final line: “Describe what you want.”\n30 sec, cut to the grid of a 173 BPM track."
+   },
+   "tags": [
+    "ai",
+    "motion",
+    "3d"
+   ],
+   "skills": [
+    "edit",
+    "color",
+    "sound",
+    "type",
+    "vfx",
+    "concept"
+   ],
+   "types": [
+    "test",
+    "promo",
+    "logo",
+    "visuals",
+    "saas",
+    "hyper",
+    "explainer",
+    "kinetic",
+    "social"
+   ],
+   "tools": [
+    "higgs",
+    "ae",
+    "claude",
+    "seedance",
+    "gpt",
+    "codex"
+   ],
+   "format": "horizontal",
+   "w": 1920,
+   "h": 1080,
+   "duration": 30,
+   "date": "2026-10",
+   "kind": "video",
+   "src": "media/pmvgu23i1rtze.mp4",
+   "poster": "media/pmvgu23i1rtze.jpg"
+  },
+  {
+   "id": "pmvgw3be78qjq",
+   "title": {
+    "ru": "ДЕТРАЛЕКС",
+    "en": "DETRALEX"
+   },
+   "brief": {
+    "ru": "Задача от Onpoint: 12-секундная бесшовная анимация для Детралекса, которая оживляет статичный слайд лендинга. Лёгкая, технологичная, в медицинском стиле бренда.\nСлайд собирается слой за слоем: заголовок проявляется из блюра, по венам на «ноге» бегут неоновые нити, три карточки печатают заголовки и считают цифры с графиком, кнопка «Подробнее» появляется с лёгким баунсом. Финал мягко замыкает петлю.\n2048×1536, 25 fps, H.264, до 10 Мбит/с.",
+    "en": "Brief from Onpoint: a 12-second seamless looping ad for Detralex that brings a static landing-page slide to life. Light, high-tech, in the brand’s medical style.\nThe slide builds layer by layer: the headline resolves out of a blur, glowing neon threads run along the veins of the leg, three cards type out their headings and count up figures with a chart, and the “Learn more” button pops in with a soft bounce. The ending eases back into the start of the loop.\n2048×1536, 25 fps, H.264, up to 10 Mbps."
+   },
+   "tags": [
+    "ai",
+    "3d",
+    "motion",
+    "ux"
+   ],
+   "skills": [
+    "edit",
+    "vfx",
+    "color",
+    "type"
+   ],
+   "types": [
+    "promo",
+    "test",
+    "hyper",
+    "saas"
+   ],
+   "tools": [
+    "hailuo",
+    "claude",
+    "ae",
+    "figma"
+   ],
+   "format": "horizontal",
+   "w": 2048,
+   "h": 1536,
+   "duration": 12,
+   "date": "2026-10",
+   "kind": "video",
+   "src": "media/pmvgw3be78qjq.mp4",
+   "poster": "media/pmvgw3be78qjq.jpg"
+  },
+  {
+   "id": "pmvgw8azflx9g",
+   "title": {
+    "ru": "AI-gen for Jewerly site",
+    "en": "Jewerly UX/UI Advertisment"
+   },
+   "brief": {
+    "ru": "Задача от ТОПАР (ювелирный бренд 585): 5-секундный ролик для сайта. Два фрагмента сшиты в одно непрерывное движение камеры, без склеек.\nГранж-секцию «съедает» кольцо с зубами, камера отлетает и открывает модель в белой комнате «МЯТЫЙ МЕТАЛЛ», затем наезжает на брошь-сердечко. Кожа темнеет, и в финале сердце остаётся одно на чёрном. Ритм: четыре удержания и быстрые переходы с motion blur.\n5 сек, 30 fps, без звука.",
+    "en": "Brief from TOPAR (585 jewellery brand): a 5-second website video. Two parts stitched into one continuous camera move, no cuts.\nA grunge section gets “eaten” by a ring with teeth, the camera pulls back to reveal the model in a white “CRUMPLED METAL” room, then pushes in on a heart brooch. The skin darkens until the heart is left alone on black. The rhythm is four holds linked by fast motion-blur transitions.\n5 sec, 30 fps, no sound."
+   },
+   "tags": [
+    "ai",
+    "ux"
+   ],
+   "skills": [
+    "edit",
+    "color"
+   ],
+   "types": [
+    "visuals",
+    "test",
+    "product"
+   ],
+   "tools": [
+    "kling",
+    "gpt",
+    "claude",
+    "ae"
+   ],
+   "format": "horizontal",
+   "w": 1280,
+   "h": 720,
+   "duration": 5,
+   "date": "2026-10",
+   "kind": "video",
+   "src": "media/pmvgw8azflx9g.mp4",
+   "poster": "media/pmvgw8azflx9g.jpg"
+  },
+  {
+   "id": "pmvgv4nlpq8dt",
+   "title": {
+    "ru": "Как Nokia проспала iPhone",
+    "en": "How Nokia Missed the iPhone"
+   },
+   "brief": {
+    "ru": "Задача от независимой студии: 20-секундный ролик на типографике о том, как Nokia потеряла лидерство, хотя знала об угрозе iPhone.\nТекст собирается слово за словом под озвучку: доля Nokia падает на графике, 3310 отсчитывает до 1 000 000 000, Стив Джобс показывает первый iPhone, а в 2014-м Microsoft покупает Nokia. В финале кнопки Nokia превращаются в иконки приложений: интерфейс меняет стандарты всего рынка.\nБелый фон, синий Nokia #1C4598. Три уровня текста: ключевые слова синим, второй уровень на светло-голубой подложке, остальное чёрным. На экране максимум две строки.\n1080×1920, 30 fps.",
+    "en": "Brief from an independent studio: a 20-second kinetic-type video on how Nokia lost its lead despite seeing the iPhone coming.\nWords build up in sync with the voiceover: Nokia’s market share drops on a falling chart, a 3310 counts up to 1,000,000,000, Steve Jobs unveils the first iPhone, and in 2014 Microsoft buys Nokia. In the finale, Nokia’s keypad turns into touchscreen app icons, showing how one interface reset the standard for the whole market.\nWhite background, Nokia blue #1C4598. Three text levels: key words in blue, secondary ones on a light-blue highlight, the rest in black. Never more than two lines on screen.\n1080×1920, 30 fps."
+   },
+   "tags": [
+    "motion"
+   ],
+   "skills": [
+    "edit",
+    "type",
+    "sound",
+    "concept"
+   ],
+   "types": [
+    "social",
+    "test",
+    "kinetic",
+    "visuals"
+   ],
+   "tools": [
+    "claude",
+    "ae",
+    "ill"
+   ],
+   "format": "vertical",
+   "w": 1080,
+   "h": 1920,
+   "duration": 22,
+   "date": "2026-10",
+   "kind": "video",
+   "src": "media/pmvgv4nlpq8dt.mp4",
+   "poster": "media/pmvgv4nlpq8dt.jpg"
+  },
+  {
+   "id": "pmvgwgo04h7uj",
+   "title": {
+    "ru": "пример покраски видео",
+    "en": "пример покраски видео"
+   },
+   "brief": {
+    "ru": "Промо трека Hobo Kid к выходу альбома: 21-секундный тизер для соцсетей с анонсом даты релиза.\nАртист в холодной комнате читает в красную телефонную трубку. Монтаж в ритм трека, со сплит-скринами и сменой планов на каждый такт, строчки текста идут субтитрами. Покраска в холодные сине-бирюзовые тона, единственный тёплый акцент — красный телефон. В финале чёрный экран с датой 21.11.\n1080×1920, 21 сек, 60 fps.",
+    "en": "Album promo for a Hobo Kid track: a 21-second social teaser announcing the release date.\nThe artist raps into a red rotary phone in a cold-toned room. The edit cuts on the beat with split screens and a new shot on every bar, with the lyrics running as subtitles. The grade is cool blue-teal, and the red phone is the only warm accent in the frame. It closes on a black card with the date, 21.11.\n1080×1920, 21 sec, 60 fps."
+   },
+   "tags": [
+    "editing"
+   ],
+   "skills": [
+    "edit",
+    "color",
+    "type",
+    "concept"
+   ],
+   "types": [
+    "promo",
+    "social"
+   ],
+   "tools": [
+    "pr",
+    "dv",
+    "ae"
+   ],
+   "format": "vertical",
+   "w": 1080,
+   "h": 1920,
+   "duration": 21.4,
+   "date": "2025-11",
+   "kind": "video",
+   "src": "media/pmvgwgo04h7uj.mp4",
+   "poster": "media/pmvgwgo04h7uj.jpg"
+  },
+  {
+   "id": "pmvgz4qre5936",
+   "title": {
+    "ru": "Кибертроник (Лого)",
+    "en": "Cybertronic (Logo)"
+   },
+   "brief": {
+    "ru": "Задача от клуба технического творчества «Кибертроник»: 5-секундная анимация логотипа для видео и соцсетей клуба.\nИз точки на светлом фоне вырастает треугольник, он разлетается вихрем синих полигональных осколков, и они собираются в знак «К». Знак сдвигается влево, из-за него выезжают название и подпись «Клуб технического творчества». Идея в том, что из мелких деталей собирается конструкция, как у детей на занятиях в клубе.\n1920×1080, 5 сек, 30 fps.",
+    "en": "Brief from Kibertronik, a kids’ tech and engineering club: a 5-second logo animation for the club’s videos and social media.\nA dot on a light background turns into a triangle that bursts into a swirl of blue low-poly shards, which assemble into the “K” mark. The mark slides left as the name and the tagline “Technical Creativity Club” slide out from behind it. The idea is small parts building into one structure, the way kids build things in the club.\n1920×1080, 5 sec, 30 fps."
+   },
+   "tags": [
+    "motion"
+   ],
+   "skills": [
+    "edit",
+    "concept",
+    "vfx"
+   ],
+   "types": [
+    "logo",
+    "promo",
+    "social"
+   ],
+   "tools": [
+    "ae",
+    "ps",
+    "ill"
+   ],
+   "format": "horizontal",
+   "w": 1920,
+   "h": 1080,
+   "duration": 5,
+   "date": "2026-07",
+   "kind": "video",
+   "src": "media/pmvgz4qre5936.mp4",
+   "poster": "media/pmvgz4qre5936.jpg"
+  },
+  {
+   "id": "pmvgyx58pp441",
+   "title": {
+    "ru": "Animated Stories OFFTOP",
+    "en": "Animated Stories OFFTOP"
+   },
+   "brief": {
+    "ru": "Задача от студии звукозаписи ROOM616: 14-секундная сторис-анонс третьей части их вечеринки OFFTOP в Петербурге.\nРолик стартует с лампы на проводе, луч света «включает» афишу. Логотип OFFTOP и инфоблок проявляются через глитч и перебор символов: место, дата, лайнап, QR на билеты. Дальше афиша живёт в цикле: прожектор переливается синим, фиолетовым и бирюзовым, чтобы сторис держала внимание до свайпа.\n1440×2560, 14 сек, 30 fps.",
+    "en": "Brief from recording studio ROOM616: a 14-second Instagram story announcing part three of their OFFTOP party in Saint Petersburg.\nIt opens on a hanging lamp whose beam switches the poster on. The OFFTOP logo and info block resolve through a glitch and character-scramble reveal: venue, date, line-up and a ticket QR code. The poster then loops, with the spotlight shifting through blue, violet and teal to hold attention until the swipe.\n1440×2560, 14 sec, 30 fps."
+   },
+   "tags": [
+    "motion"
+   ],
+   "skills": [
+    "edit",
+    "type",
+    "vfx",
+    "concept"
+   ],
+   "types": [
+    "social"
+   ],
+   "tools": [
+    "ae"
+   ],
+   "format": "vertical",
+   "w": 1440,
+   "h": 2560,
+   "duration": 14.4,
+   "date": "2025-08",
+   "kind": "video",
+   "src": "media/pmvgyx58pp441.mp4",
+   "poster": "media/pmvgyx58pp441.jpg"
+  },
+  {
+   "id": "pmvgzsm2fpm8b",
+   "title": {
+    "ru": "Сценическая подложка",
+    "en": "Stage Background"
+   },
+   "brief": {
+    "ru": "Задача от концертного агентства: 16-секундная подложка на экран сцены для концерта Zarhezza, с QR-кодом на страницу артиста.\nПо центру обложка-QR, из неё выезжает радужный CD-диск, сверху проявляется имя ZARHEZZA. Фон — тёмный фиолетовый футаж с шумом и зерном, который плавно меняется и не перебивает артиста на сцене. Ролик зациклен и может крутиться весь сет.\n3840×2160, 16 сек, 60 fps.",
+    "en": "Brief from a concert agency: a 16-second stage-screen backdrop for a Zarhezza live show, with a QR code linking to the artist’s page.\nA QR-code cover sits at the centre, a holographic CD slides out of it, and the name ZARHEZZA fades in above. The background is dark violet footage with noise and grain that shifts slowly and never pulls focus from the artist on stage. The clip loops seamlessly to run through the whole set.\n3840×2160, 16 sec, 60 fps."
+   },
+   "tags": [
+    "motion"
+   ],
+   "skills": [
+    "edit",
+    "concept",
+    "vfx",
+    "type"
+   ],
+   "types": [],
+   "tools": [
+    "ae",
+    "ps"
+   ],
+   "format": "horizontal",
+   "w": 3840,
+   "h": 2160,
+   "duration": 16,
+   "date": "2026-10",
+   "kind": "video",
+   "src": "media/pmvgzsm2fpm8b.mp4",
+   "poster": "media/pmvgzsm2fpm8b.jpg"
+  }
+ ]
+}
