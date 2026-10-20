@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ia7slV1mZ6Ey1JxJWcPE7qY6tyEYt1u1kKHjHl6ePmc=' 'sha256-7Zda4DAM1gykh+HEr+GHn6MFUd83LA6vsAW4jyYheak=' 'sha256-Kw+KAmcH8QS+jTkWUCiszAxJCCJQDXuvC2e/xK7bZqw=' 'sha256-+qjNZvEawpAJsw+y51jQ9fz5SHeRr4n5lRvwGpbYB6k=' 'sha256-bV7SqawuA7TWnLJMzoFsrCt2uvytYlMgvpB+9UYeaCg='; style-src https://fonts.googleapis.com 'sha256-6s0v388nKQiXg2E89RLmh1RBwBedmY7nwXvh+ALu8RM='; font-src https://fonts.gstatic.com; img-src 'self' data: blob: blob:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ia7slV1mZ6Ey1JxJWcPE7qY6tyEYt1u1kKHjHl6ePmc=' 'sha256-7Zda4DAM1gykh+HEr+GHn6MFUd83LA6vsAW4jyYheak=' 'sha256-Fim29kqoUpGA2aml6GMQAydbfA/NTBTr4Q8/h7o8tJ0=' 'sha256-+qjNZvEawpAJsw+y51jQ9fz5SHeRr4n5lRvwGpbYB6k=' 'sha256-bV7SqawuA7TWnLJMzoFsrCt2uvytYlMgvpB+9UYeaCg='; style-src https://fonts.googleapis.com 'sha256-zHcR89X1rWqr1TdxetceBEM5Y6eVgUc2uYCF5GUsSz4='; font-src https://fonts.gstatic.com; img-src 'self' data: blob: blob:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="description" content="Konstantin Burdin: motion designer. Showreel, experience, skills.">
 <meta name="referrer" content="no-referrer">
 <title>Konstantin Burdin Motion</title>
@@ -272,6 +272,11 @@ html.pv-lock { overflow: hidden; }
   .pt-filter { height: 34px; }
   .pt-sort { height: 34px; max-width: 170px; }
 }
+
+.pv-fs { position: absolute; top: 12px; right: 12px; z-index: 2; width: 36px; height: 36px; border: 0; border-radius: 50%; background: rgba(20,22,28,.75); color: #fff; display: grid; place-items: center; cursor: pointer; opacity: .85; }
+.pv-fs:hover { background: #4d84ff; opacity: 1; }
+.pv-media:fullscreen { background: #000; }
+.pv-media:-webkit-full-screen { background: #000; }
 
 :root { --nh: 60px; }
 #projects { scroll-margin-top: calc(var(--nh) + 8px); }
@@ -961,6 +966,19 @@ body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
       else if (p.src) { media = el('video'); media.controls = true; media.autoplay = true; media.loop = true; media.playsInline = true; media.muted = false; if (p.poster) media.poster = resolve(p.poster); media.src = resolve(p.src); var pr = media.play && media.play(); if (pr && pr.catch) pr.catch(function () {}); }
       else { media = el('div', 'pv-ph'); var cs = p.color || ['#1b2a55', '#4d84ff']; media.style.background = 'linear-gradient(145deg,' + cs[0] + ',' + cs[1] + ')'; media.appendChild(el('span', null, t.nomedia)); }
       vmedia.appendChild(media);
+      if (media.tagName === 'VIDEO' || media.tagName === 'IMG') {
+        var fs = el('button', 'pv-fs'); fs.type = 'button'; fs.setAttribute('aria-label', 'Fullscreen');
+        fs.appendChild(icon(['M4 9V4h5', 'M20 9V4h-5', 'M4 15v5h5', 'M20 15v5h-5'], 18));
+        var goFs = function () {
+          var d = document, on = d.fullscreenElement || d.webkitFullscreenElement;
+          if (on) { (d.exitFullscreen || d.webkitExitFullscreen).call(d); return; }
+          var r = vmedia.requestFullscreen || vmedia.webkitRequestFullscreen;
+          if (r) { var q = r.call(vmedia); if (q && q.catch) q.catch(function () { if (media.webkitEnterFullscreen) media.webkitEnterFullscreen(); }); }
+          else if (media.webkitEnterFullscreen) media.webkitEnterFullscreen();
+        };
+        fs.addEventListener('click', goFs); media.addEventListener('dblclick', goFs);
+        vmedia.appendChild(fs);
+      }
       vside.textContent = '';
       var head = el('div', 'pv-head'); head.appendChild(el('h3', null, pick(p.title)));
       var meta = []; if (p.date) meta.push(String(p.date).slice(0, 4)); if (p.duration) meta.push(Math.round(p.duration) + ' s');
