@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ia7slV1mZ6Ey1JxJWcPE7qY6tyEYt1u1kKHjHl6ePmc=' 'sha256-7Zda4DAM1gykh+HEr+GHn6MFUd83LA6vsAW4jyYheak=' 'sha256-Fim29kqoUpGA2aml6GMQAydbfA/NTBTr4Q8/h7o8tJ0=' 'sha256-+qjNZvEawpAJsw+y51jQ9fz5SHeRr4n5lRvwGpbYB6k=' 'sha256-bV7SqawuA7TWnLJMzoFsrCt2uvytYlMgvpB+9UYeaCg='; style-src https://fonts.googleapis.com 'sha256-CB9+D5RhZL8XHr4zU/KaYPbNXRGAO5KNKM44uEWvOno='; font-src https://fonts.gstatic.com; img-src 'self' data: blob: blob:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ia7slV1mZ6Ey1JxJWcPE7qY6tyEYt1u1kKHjHl6ePmc=' 'sha256-7Zda4DAM1gykh+HEr+GHn6MFUd83LA6vsAW4jyYheak=' 'sha256-Fim29kqoUpGA2aml6GMQAydbfA/NTBTr4Q8/h7o8tJ0=' 'sha256-UKQ3wmr8tTbZ2ONa9aN+kxV4lQycdy1n6aFMrhhQFr0=' 'sha256-bV7SqawuA7TWnLJMzoFsrCt2uvytYlMgvpB+9UYeaCg='; style-src https://fonts.googleapis.com 'sha256-l441fqN1s0g9hjLJPxZTN/1MbgnecIbyyfFSPrOCMrs='; font-src https://fonts.gstatic.com; img-src 'self' data: blob: blob:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="description" content="Konstantin Burdin: motion designer. Showreel, experience, skills.">
 <meta name="referrer" content="no-referrer">
 <title>Konstantin Burdin Motion</title>
@@ -283,7 +283,8 @@ html.pv-lock { overflow: hidden; }
 #projects { scroll-margin-top: calc(var(--nh) + 8px); }
 .pj { text-align: left; }
 .pj h2 { margin-bottom: 18px; }
-.pfilters { position: sticky; top: var(--nh); z-index: 4; margin-inline: -20px; padding: 10px 20px; background: rgba(6,7,9,.92); backdrop-filter: blur(10px); margin-bottom: 18px; }
+.pfilters { position: relative; top: var(--nh); z-index: 4; margin-inline: -20px; padding: 10px 20px; background: rgba(6,7,9,.92); backdrop-filter: blur(10px); margin-bottom: 18px; }
+.pj.ex .pfilters { position: sticky; }
 .pfilters.stuck { border-bottom: 1px solid #262a35; }
 .pgrid { transition: height .5s cubic-bezier(.2,.8,.2,1); }
 .pmore { display: flex; justify-content: flex-start; padding-top: 28px; }
@@ -1050,11 +1051,11 @@ body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
   function track() {
     var r = more.getBoundingClientRect(), s = sec.getBoundingClientRect(), vh = window.innerHeight;
     fl.hidden = !(expanded && r.top > vh - 10 && s.top < vh - 120);
-    fbar.classList.toggle('stuck', fbar.getBoundingClientRect().top <= nav.offsetHeight + 1 && s.bottom > 0);
+    fbar.classList.toggle('stuck', expanded && fbar.getBoundingClientRect().top <= nav.offsetHeight + 1 && s.bottom > 0);
   }
   window.addEventListener('scroll', track, { passive: true }); window.addEventListener('resize', track);
   function setExpanded(v) {
-    expanded = v; more.setAttribute('aria-expanded', v); more.classList.toggle('open', v); G.setExpanded(v); texts();
+    expanded = v; more.setAttribute('aria-expanded', v); more.classList.toggle('open', v); sec.classList.toggle('ex', v); G.setExpanded(v); texts();
     if (!v) { var top = sec.getBoundingClientRect().top; if (top < nav.offsetHeight) sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     track();
   }
