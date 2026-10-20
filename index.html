@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ia7slV1mZ6Ey1JxJWcPE7qY6tyEYt1u1kKHjHl6ePmc=' 'sha256-7Zda4DAM1gykh+HEr+GHn6MFUd83LA6vsAW4jyYheak=' 'sha256-Kw+KAmcH8QS+jTkWUCiszAxJCCJQDXuvC2e/xK7bZqw=' 'sha256-+qjNZvEawpAJsw+y51jQ9fz5SHeRr4n5lRvwGpbYB6k=' 'sha256-bV7SqawuA7TWnLJMzoFsrCt2uvytYlMgvpB+9UYeaCg='; style-src https://fonts.googleapis.com 'sha256-O/mdXlWJuEoPPMlZPwyprAYew+fluHT+yopVGOSb1A8='; font-src https://fonts.gstatic.com; img-src 'self' data: blob: blob:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ia7slV1mZ6Ey1JxJWcPE7qY6tyEYt1u1kKHjHl6ePmc=' 'sha256-7Zda4DAM1gykh+HEr+GHn6MFUd83LA6vsAW4jyYheak=' 'sha256-Kw+KAmcH8QS+jTkWUCiszAxJCCJQDXuvC2e/xK7bZqw=' 'sha256-+qjNZvEawpAJsw+y51jQ9fz5SHeRr4n5lRvwGpbYB6k=' 'sha256-bV7SqawuA7TWnLJMzoFsrCt2uvytYlMgvpB+9UYeaCg='; style-src https://fonts.googleapis.com 'sha256-6s0v388nKQiXg2E89RLmh1RBwBedmY7nwXvh+ALu8RM='; font-src https://fonts.gstatic.com; img-src 'self' data: blob: blob:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="description" content="Konstantin Burdin: motion designer. Showreel, experience, skills.">
 <meta name="referrer" content="no-referrer">
 <title>Konstantin Burdin Motion</title>
@@ -169,7 +169,7 @@ h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(22px, 
 .pempty { margin: 28px 0; text-align: center; color: #98a0b3; }
 
 /* toolbar */
-.pt-row { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.pt-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; min-width: 0; }
 .pt-fwrap { position: relative; flex: none; }
 .pt-filter { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: 99px; border: 1px solid #262a35; background: #14161c; color: #eceef3; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
 .pt-filter:hover, .pt-filter[aria-expanded="true"] { border-color: #8fb0ff; color: #8fb0ff; }
@@ -185,29 +185,32 @@ h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(22px, 
 .pt-txt b { font-size: 14px; font-weight: 700; }
 .pt-txt small { font-size: 12.5px; color: #98a0b3; line-height: 1.35; }
 .pt-clear { margin: 4px 6px 2px; padding: 8px; border: 0; border-top: 1px solid #262a35; background: none; color: #8fb0ff; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; text-align: left; }
-.pt-chips { display: flex; gap: 8px; min-width: 0; flex: 1; overflow-x: auto; scrollbar-width: none; padding: 2px; }
+.pt-chips { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; flex: 1 1 0; padding: 2px; }
 .pt-chips::-webkit-scrollbar { display: none; }
 .pt-chip { flex: none; height: 32px; padding: 0 14px; border-radius: 99px; border: 1px solid #262a35; background: transparent; color: #98a0b3; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: background .2s, color .2s, border-color .2s; }
 .pt-chip:hover { color: #eceef3; border-color: #4a5166; }
 .pt-chip.on { background: #4d84ff; border-color: #4d84ff; color: #fff; }
-.pt-sortwrap { flex: none; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #98a0b3; }
+.pt-sortwrap { flex: none; margin-left: auto; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #98a0b3; }
 .pt-sort { height: 36px; border-radius: 10px; border: 1px solid #262a35; background: #14161c; color: #eceef3; font: inherit; font-size: 13px; padding: 0 8px; }
-@media (max-width: 720px) {
-  .pt-sortlab { display: none; } .pt-flabel { display: none; } .pt-filter { padding: 0 11px; }
-  .pt-row { flex-wrap: wrap; row-gap: 8px; }
+@media (max-width: 1360px) {
+  .pt-row { row-gap: 8px; }
   .pt-fwrap { order: 1; }
   .pt-sortwrap { order: 2; margin-left: auto; }
-  .pt-chips { order: 3; flex: 1 1 100%; min-width: 0; -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent); }
+  .pt-chips { order: 3; flex: 1 1 100%; min-width: 0; }
+}
+@media (max-width: 720px) {
+  .pt-sortlab { display: none; } .pt-flabel { display: none; } .pt-filter { padding: 0 11px; }
+  .pt-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent); }
 }
 
 /* viewer */
 .pv { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; background: rgba(4,5,7,.82); backdrop-filter: blur(6px); opacity: 0; transition: opacity .2s; }
 .pv.on { opacity: 1; }
 .pv[hidden] { display: none; }
-.pv-box { width: min(1120px, 94vw); height: min(86vh, 740px); display: grid; grid-template-columns: minmax(0, 1fr) 380px; border-radius: 14px; overflow: hidden; background: #14161c; color: #eceef3; transform: scale(.97); transition: transform .25s cubic-bezier(.2,.8,.2,1); }
+.pv-box { width: min(1120px, 94vw); height: min(86vh, 740px); display: grid; grid-template-columns: minmax(0, 1fr) 380px; grid-template-rows: minmax(0, 1fr); border-radius: 14px; overflow: hidden; background: #14161c; color: #eceef3; transform: scale(.97); transition: transform .25s cubic-bezier(.2,.8,.2,1); }
 .pv.on .pv-box { transform: none; }
-.pv-media { background: #000; display: grid; place-items: center; min-width: 0; min-height: 0; }
-.pv-media video, .pv-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.pv-media { background: #000; position: relative; overflow: hidden; min-width: 0; min-height: 0; }
+.pv-media video, .pv-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
 .pv-ph { width: 100%; height: 100%; display: grid; place-items: center; color: rgba(255,255,255,.8); font-weight: 600; }
 .pv-side { display: flex; flex-direction: column; min-height: 0; border-left: 1px solid #262a35; }
 .pv-head { padding: 18px 56px 14px 20px; border-bottom: 1px solid #262a35; display: grid; gap: 4px; }
