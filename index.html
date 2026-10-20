@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ia7slV1mZ6Ey1JxJWcPE7qY6tyEYt1u1kKHjHl6ePmc=' 'sha256-7Zda4DAM1gykh+HEr+GHn6MFUd83LA6vsAW4jyYheak=' 'sha256-Fim29kqoUpGA2aml6GMQAydbfA/NTBTr4Q8/h7o8tJ0=' 'sha256-UKQ3wmr8tTbZ2ONa9aN+kxV4lQycdy1n6aFMrhhQFr0=' 'sha256-bV7SqawuA7TWnLJMzoFsrCt2uvytYlMgvpB+9UYeaCg='; style-src https://fonts.googleapis.com 'sha256-l441fqN1s0g9hjLJPxZTN/1MbgnecIbyyfFSPrOCMrs='; font-src https://fonts.gstatic.com; img-src 'self' data: blob: blob:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ia7slV1mZ6Ey1JxJWcPE7qY6tyEYt1u1kKHjHl6ePmc=' 'sha256-7Zda4DAM1gykh+HEr+GHn6MFUd83LA6vsAW4jyYheak=' 'sha256-VZHNIBXw+2pDB+7SBOHbBIN+9oTviaA7BO4cVeRoAZc=' 'sha256-UKQ3wmr8tTbZ2ONa9aN+kxV4lQycdy1n6aFMrhhQFr0=' 'sha256-bV7SqawuA7TWnLJMzoFsrCt2uvytYlMgvpB+9UYeaCg='; style-src https://fonts.googleapis.com 'sha256-iHlI36KehFv0MOCRVGMPWmqkNYhGdPbQbfD57w8BzBs='; font-src https://fonts.gstatic.com; img-src 'self' data: blob: blob:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="description" content="Konstantin Burdin: motion designer. Showreel, experience, skills.">
 <meta name="referrer" content="no-referrer">
 <title>Konstantin Burdin Motion</title>
@@ -278,6 +278,14 @@ html.pv-lock { overflow: hidden; }
 .pv-fs:hover { background: #4d84ff; opacity: 1; }
 .pv-media:fullscreen { background: #000; }
 .pv-media:-webkit-full-screen { background: #000; }
+
+@media (max-width: 559px) {
+  .pgrid.capout .pcard { background: none; overflow: visible; border-radius: 0; }
+  .pgrid.capout .pmedia { inset: 0 0 58px 0; border-radius: 10px; overflow: hidden; }
+  .pgrid.capout .pcapt { padding: 8px 2px 0; background: none; height: 58px; box-sizing: border-box; gap: 2px; align-content: start; }
+  .pgrid.capout .pc-t { font-size: 12px; color: #eceef3; }
+  .pgrid.capout .pc-s { font-size: 10.5px; color: #98a0b3; }
+}
 
 :root { --nh: 60px; }
 #projects { scroll-margin-top: calc(var(--nh) + 8px); }
@@ -907,7 +915,8 @@ body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
       var W = grid.clientWidth; if (!W) return;
       var cols = W >= 900 ? 4 : W >= 560 ? 3 : 2, gap = W < 560 ? 10 : 14;
       var cw = (W - gap * (cols - 1)) / cols, hs = []; for (var i = 0; i < cols; i++) hs.push(0);
-      var list = G.shown || [];
+      var list = G.shown || [], CH = W < 560 ? 58 : 0;
+      grid.classList.toggle('capout', W < 560);
       if (G.limit && !G.expanded && W >= 560) { // justified rows: 3 + 2
         var rows = [list.slice(0, 3), list.slice(3, 5)], y = 0;
         rows.forEach(function (row) {
@@ -928,7 +937,7 @@ body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
       list.forEach(function (p) {
         var c = G.cards[p.id]; var k = 0;
         for (var j = 1; j < cols; j++) if (hs[j] < hs[k] - 0.5) k = j;
-        var h = Math.round(cw * ratio(p));
+        var h = Math.round(cw * ratio(p)) + CH;
         c.style.width = cw + 'px'; c.style.height = h + 'px';
         c.style.transform = 'translate(' + Math.round(k * (cw + gap)) + 'px,' + Math.round(hs[k]) + 'px)';
         hs[k] += h + gap;
