@@ -299,7 +299,9 @@
     "vfx",
     "type"
    ],
-   "types": [],
+   "types": [
+    "visuals"
+   ],
    "tools": [
     "ae",
     "ps"
