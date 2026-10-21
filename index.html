@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ia7slV1mZ6Ey1JxJWcPE7qY6tyEYt1u1kKHjHl6ePmc=' 'sha256-7Zda4DAM1gykh+HEr+GHn6MFUd83LA6vsAW4jyYheak=' 'sha256-VZHNIBXw+2pDB+7SBOHbBIN+9oTviaA7BO4cVeRoAZc=' 'sha256-UKQ3wmr8tTbZ2ONa9aN+kxV4lQycdy1n6aFMrhhQFr0=' 'sha256-bV7SqawuA7TWnLJMzoFsrCt2uvytYlMgvpB+9UYeaCg='; style-src https://fonts.googleapis.com 'sha256-18G2BQTHTCZU0T0tr1SNdfSZsDqmPtJ1b3K90pThpxY='; font-src https://fonts.gstatic.com; img-src 'self' data: blob: blob:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ia7slV1mZ6Ey1JxJWcPE7qY6tyEYt1u1kKHjHl6ePmc=' 'sha256-7Zda4DAM1gykh+HEr+GHn6MFUd83LA6vsAW4jyYheak=' 'sha256-HQQDsOUmfGE1hB6LkkTqG+S3c02KY6QT3i1wGGfPMC8=' 'sha256-UKQ3wmr8tTbZ2ONa9aN+kxV4lQycdy1n6aFMrhhQFr0=' 'sha256-bV7SqawuA7TWnLJMzoFsrCt2uvytYlMgvpB+9UYeaCg='; style-src https://fonts.googleapis.com 'sha256-18G2BQTHTCZU0T0tr1SNdfSZsDqmPtJ1b3K90pThpxY='; font-src https://fonts.gstatic.com; img-src 'self' data: blob: blob:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="description" content="Konstantin Burdin: motion designer. Showreel, experience, skills.">
 <meta name="referrer" content="no-referrer">
 <title>Konstantin Burdin Motion</title>
@@ -992,12 +992,13 @@ body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
         tl.forEach(function (id) { var it = el('button', 'pv-tool'); it.type = 'button'; it.title = toolName(id); it.addEventListener('click', function () { G.filters = {}; G.filters['tool:' + id] = true; closeViewer(); render(); try { grid.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {} }); it.appendChild(toolBadge(id)); it.appendChild(el('span', 'ptool-n', toolName(id))); row.appendChild(it); });
         body.appendChild(row);
       }
-      var did = (p.skills || []).filter(function (x) { return t.skills[x]; });
-      if (did.length) { body.appendChild(el('h4', null, t.did)); var dr = el('div', 'pv-tags'); did.forEach(function (x) { dr.appendChild(el('span', 'pv-tag', t.skills[x])); }); body.appendChild(dr); }
       var tg = (p.tags || []).concat([formatOf(p)]);
       var trow = el('div', 'pv-tags'); tg.forEach(function (x) { if (t[x]) trow.appendChild(el('span', 'pv-tag', t[x][0])); });
-      (p.types || []).forEach(function (x) { if (t.types[x]) trow.appendChild(el('span', 'pv-tag', t.types[x])); });
       body.appendChild(trow);
+      var did = (p.skills || []).filter(function (x) { return t.skills[x]; });
+      if (did.length) { body.appendChild(el('h4', null, t.did)); var dr = el('div', 'pv-tags'); did.forEach(function (x) { dr.appendChild(el('span', 'pv-tag', t.skills[x])); }); body.appendChild(dr); }
+      var ty = (p.types || []).filter(function (x) { return t.types[x]; });
+      if (ty.length) { var tr = el('div', 'pv-tags'); ty.forEach(function (x) { tr.appendChild(el('span', 'pv-tag', t.types[x])); }); body.appendChild(tr); }
       vside.appendChild(body);
       vprev.hidden = list.length < 2; vnext.hidden = list.length < 2;
       vclose.setAttribute('aria-label', t.close); vprev.setAttribute('aria-label', t.prev); vnext.setAttribute('aria-label', t.next);
