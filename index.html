@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ia7slV1mZ6Ey1JxJWcPE7qY6tyEYt1u1kKHjHl6ePmc=' 'sha256-7Zda4DAM1gykh+HEr+GHn6MFUd83LA6vsAW4jyYheak=' 'sha256-HQQDsOUmfGE1hB6LkkTqG+S3c02KY6QT3i1wGGfPMC8=' 'sha256-UKQ3wmr8tTbZ2ONa9aN+kxV4lQycdy1n6aFMrhhQFr0=' 'sha256-bV7SqawuA7TWnLJMzoFsrCt2uvytYlMgvpB+9UYeaCg='; style-src https://fonts.googleapis.com 'sha256-18G2BQTHTCZU0T0tr1SNdfSZsDqmPtJ1b3K90pThpxY='; font-src https://fonts.gstatic.com; img-src 'self' data: blob: blob:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ia7slV1mZ6Ey1JxJWcPE7qY6tyEYt1u1kKHjHl6ePmc=' 'sha256-7Zda4DAM1gykh+HEr+GHn6MFUd83LA6vsAW4jyYheak=' 'sha256-NBxLwgTXr3dOsqeNrl+3DXulrPX7n8R+do0vZrnLpOY=' 'sha256-UKQ3wmr8tTbZ2ONa9aN+kxV4lQycdy1n6aFMrhhQFr0=' 'sha256-bV7SqawuA7TWnLJMzoFsrCt2uvytYlMgvpB+9UYeaCg='; style-src https://fonts.googleapis.com 'sha256-18G2BQTHTCZU0T0tr1SNdfSZsDqmPtJ1b3K90pThpxY='; font-src https://fonts.gstatic.com; img-src 'self' data: blob: blob:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="description" content="Konstantin Burdin: motion designer. Showreel, experience, skills.">
-<meta name="referrer" content="no-referrer">
-<title>Konstantin Burdin Motion</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="referrer" content="no-referrer">
+<title>Konstantin Burdin Motion</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap">
@@ -962,7 +962,7 @@ body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
     document.body.appendChild(vw);
     var lastFocus = null;
     function fillViewer() {
-      var list = G.shown || [], p = list[G.current]; if (!p) return; var t = T();
+      var list = G.vlist || [], p = list[G.current]; if (!p) return; var t = T(); setHash(p.id);
       vmedia.textContent = '';
       var media;
       if (p.kind === 'image' && p.src) { media = el('img'); media.src = resolve(p.src); media.alt = pick(p.title); }
@@ -1007,14 +1007,24 @@ body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
       vprev.hidden = list.length < 2; vnext.hidden = list.length < 2;
       vclose.setAttribute('aria-label', t.close); vprev.setAttribute('aria-label', t.prev); vnext.setAttribute('aria-label', t.next);
     }
+    // each work has its own link: #work=<id>
+    function setHash(id) {
+      try { history.replaceState(null, '', id ? '#work=' + encodeURIComponent(id) : location.pathname + location.search); } catch (e) {}
+    }
+    function fromHash() {
+      var m = /^#work=(.+)$/.exec(location.hash || ''); if (!m) return;
+      var id = decodeURIComponent(m[1]); if (vw.hidden || (G.vlist && G.vlist[G.current] && G.vlist[G.current].id !== id)) openViewer(id);
+    }
+    window.addEventListener('hashchange', fromHash);
     function stopMedia() { var v = vmedia.querySelector('video'); if (v) { v.pause(); v.removeAttribute('src'); v.load(); } }
     function openViewer(id) {
-      var list = G.shown || []; var i = list.findIndex(function (p) { return p.id === id; }); if (i < 0) return;
-      G.current = i; lastFocus = document.activeElement; fillViewer(); vw.hidden = false; document.documentElement.classList.add('pv-lock');
+      var list = G.shown || []; var i = list.findIndex(function (p) { return p.id === id; });
+      if (i < 0) { list = G.projects || []; i = list.findIndex(function (p) { return p.id === id; }); } if (i < 0) return;
+      G.vlist = list; G.current = i; lastFocus = document.activeElement; fillViewer(); vw.hidden = false; document.documentElement.classList.add('pv-lock');
       requestAnimationFrame(function () { vw.classList.add('on'); }); vclose.focus();
     }
-    function closeViewer() { stopMedia(); vw.classList.remove('on'); setTimeout(function () { vw.hidden = true; vmedia.textContent = ''; }, 200); document.documentElement.classList.remove('pv-lock'); if (lastFocus && lastFocus.focus) lastFocus.focus(); }
-    function step(d) { var n = (G.shown || []).length; if (!n) return; stopMedia(); G.current = (G.current + d + n) % n; fillViewer(); }
+    function closeViewer() { setHash(null); stopMedia(); vw.classList.remove('on'); setTimeout(function () { vw.hidden = true; vmedia.textContent = ''; }, 200); document.documentElement.classList.remove('pv-lock'); if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+    function step(d) { var n = (G.vlist || []).length; if (!n) return; stopMedia(); G.current = (G.current + d + n) % n; fillViewer(); }
     vclose.addEventListener('click', closeViewer);
     vw.addEventListener('click', function (e) { if (e.target === vw) closeViewer(); });
     vprev.addEventListener('click', function () { step(-1); }); vnext.addEventListener('click', function () { step(1); });
@@ -1026,7 +1036,7 @@ body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
     buildToolbar();
     G.render = render; G.layout = layout; G.relabel = function () { labels(); render(); if (!vw.hidden) fillViewer(); };
     G.setExpanded = function (v) { G.expanded = !!v; render(); };
-    G.setProjects = function (list, demo) { G.projects = list || []; G.demo = !!demo; labels(); render(); };
+    G.setProjects = function (list, demo) { G.projects = list || []; G.demo = !!demo; labels(); render(); fromHash(); };
     G.demo = !!o.demo;
     render();
     return G;
