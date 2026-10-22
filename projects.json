@@ -98,7 +98,7 @@
   {
    "id": "pmvgw8azflx9g",
    "title": {
-    "ru": "Ювелирная реклама UX/UI",
+    "ru": "AI-gen for Jewerly site",
     "en": "Jewerly UX/UI Advertisment"
    },
    "brief": {
@@ -249,7 +249,7 @@
   {
    "id": "pmvgyx58pp441",
    "title": {
-    "ru": "Анимированные сторис OFFTOP",
+    "ru": "Animated Stories OFFTOP",
     "en": "Animated Stories OFFTOP"
    },
    "brief": {
@@ -279,6 +279,45 @@
    "kind": "video",
    "src": "media/pmvgyx58pp441.mp4",
    "poster": "media/pmvgyx58pp441.jpg"
+  },
+  {
+   "id": "pmvjx2b999x46",
+   "title": {
+    "ru": "CT.JS — Game Engine Promo",
+    "en": "CT.JS — Game Engine Promo"
+   },
+   "brief": {
+    "ru": "Задача от клуба технического творчества «Кибертроник»: промо-ролик IT-курса по созданию игр на CT.JS. Показать, как интерес к играм можно превратить в навык их разработки.\n\nЗаписи интерфейса движка и примеры готовых игр знакомят с возможностями курса: программирование на JavaScript, работа с графикой, звуком и игровой механикой. Монтаж связывает процесс разработки с результатом — от кода и настройки объектов до работающих платформеров, аркад и головоломок. В финале — анимация логотипа клуба.\n\nВесь ролик сделал самостоятельно: от идеи и записи экрана до монтажа, анимации и работы со звуком.\n\n1920×1080, 88 сек, 30 fps.",
+    "en": "Brief from Kibertronik, a tech and engineering club: a promo for an IT course on making games with CT.JS. Show how an interest in games can grow into game development skills.\n\nScreen recordings of the engine and examples of finished games introduce what the course covers: JavaScript programming, graphics, sound and game mechanics. The edit connects the development process with the playable result, moving from code and object settings to platformers, arcade games and puzzles. It closes with the club’s animated logo.\n\nI handled the entire production: concept, screen recording, editing, animation and audio.\n\n1920×1080, 88 sec, 30 fps."
+   },
+   "tags": [
+    "editing"
+   ],
+   "skills": [
+    "sound",
+    "edit",
+    "vfx",
+    "concept"
+   ],
+   "types": [
+    "promo",
+    "logo",
+    "social"
+   ],
+   "tools": [
+    "pr",
+    "ae",
+    "ps",
+    "FL Studio"
+   ],
+   "format": "horizontal",
+   "w": 1920,
+   "h": 1080,
+   "duration": 87.5,
+   "date": "2026-07",
+   "kind": "video",
+   "src": "media/pmvjx2b999x46.mp4",
+   "poster": "media/pmvjx2b999x46.jpg"
   },
   {
    "id": "pmvgzsm2fpm8b",
@@ -314,6 +353,42 @@
    "kind": "video",
    "src": "media/pmvgzsm2fpm8b.mp4",
    "poster": "media/pmvgzsm2fpm8b.jpg"
+  },
+  {
+   "id": "pmvjxb770fi4j",
+   "title": {
+    "ru": "Визуализация обложки трека",
+    "en": "Cover Visualizer"
+   },
+   "brief": {
+    "ru": "Задача: создать промо-сторис для трека\n\nВолну с обложки воссоздал в виде аудиовизуализации, максимально близкой к оригиналу. Фиолетовая волна реагирует на музыку, а тёмный текстурный фон и лаконичная типографика сохраняют композицию обложки.\n\n1080×1920, 12 сек, 30 fps.",
+    "en": "Brief: create a promotional story for a track.\n\nI recreated the wave from the cover as an audio visualizer, matching its original appearance as closely as possible. The purple waveform responds to the music, while the dark textured background and minimal typography preserve the cover’s composition.\n\n1080×1920, 12 sec, 30 fps."
+   },
+   "tags": [
+    "motion"
+   ],
+   "skills": [
+    "edit",
+    "vfx",
+    "type",
+    "concept"
+   ],
+   "types": [
+    "visuals",
+    "social"
+   ],
+   "tools": [
+    "ae",
+    "ps"
+   ],
+   "format": "vertical",
+   "w": 1080,
+   "h": 1920,
+   "duration": 12.1,
+   "date": "2024-12",
+   "kind": "video",
+   "src": "media/pmvjxb770fi4j.mp4",
+   "poster": "media/pmvjxb770fi4j.jpg"
   }
  ]
 }
