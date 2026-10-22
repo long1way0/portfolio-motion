@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ia7slV1mZ6Ey1JxJWcPE7qY6tyEYt1u1kKHjHl6ePmc=' 'sha256-7Zda4DAM1gykh+HEr+GHn6MFUd83LA6vsAW4jyYheak=' 'sha256-NBxLwgTXr3dOsqeNrl+3DXulrPX7n8R+do0vZrnLpOY=' 'sha256-UKQ3wmr8tTbZ2ONa9aN+kxV4lQycdy1n6aFMrhhQFr0=' 'sha256-bV7SqawuA7TWnLJMzoFsrCt2uvytYlMgvpB+9UYeaCg='; style-src https://fonts.googleapis.com 'sha256-18G2BQTHTCZU0T0tr1SNdfSZsDqmPtJ1b3K90pThpxY='; font-src https://fonts.gstatic.com; img-src 'self' data: blob: blob:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Ia7slV1mZ6Ey1JxJWcPE7qY6tyEYt1u1kKHjHl6ePmc=' 'sha256-7Zda4DAM1gykh+HEr+GHn6MFUd83LA6vsAW4jyYheak=' 'sha256-bsqaAQwPGhoPIFE5beKDXW3KrqeXWunQN2axwhvTW6Y=' 'sha256-svAGelWtbEo1nuB+tlt7/TbFJTrfX6pW9knCgwsxIc0=' 'sha256-bV7SqawuA7TWnLJMzoFsrCt2uvytYlMgvpB+9UYeaCg='; style-src https://fonts.googleapis.com 'sha256-18G2BQTHTCZU0T0tr1SNdfSZsDqmPtJ1b3K90pThpxY='; font-src https://fonts.gstatic.com; img-src 'self' data: blob: blob:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="description" content="Konstantin Burdin: motion designer. Showreel, experience, skills.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -768,6 +768,21 @@ body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
       return g === 'skill' ? t.skills[v] : g === 'type' ? t.types[v] : toolName(v);
     }
 
+    function previewRows(list) {
+      var W = o.grid.clientWidth || 1040, gap = W < 560 ? 10 : 14;
+      var target = W / (W < 560 ? 220 : 250), rows = [], start = 0;
+      for (var r = 0; r < 2 && start < list.length; r++) {
+        var row = [], sum = 0;
+        while (start < list.length) {
+          var p = list[start], aspect = 1 / ratio(p);
+          if (row.length >= 2 && Math.abs(sum - target) < Math.abs(sum + aspect - target)) break;
+          row.push(p); sum += aspect; start++;
+          if (sum >= target) break;
+        }
+        rows.push(row);
+      }
+      return rows;
+    }
     function visible() {
       var by = {};
       Object.keys(G.filters).forEach(function (k) { if (G.filters[k]) (by[groupOf(k)] = by[groupOf(k)] || []).push(k); });
@@ -786,7 +801,7 @@ body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
         return idx(a) - idx(b);
       });
       G.total = list.length;
-      if (G.limit && !G.expanded) list = list.slice(0, G.limit);
+      if (G.limit && !G.expanded) { G.preview = previewRows(list); list = [].concat.apply([], G.preview); }
       return list;
     }
 
@@ -908,15 +923,15 @@ body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
       var cols = W >= 900 ? 4 : W >= 560 ? 3 : 2, gap = W < 560 ? 10 : 14;
       var cw = (W - gap * (cols - 1)) / cols, hs = []; for (var i = 0; i < cols; i++) hs.push(0);
       var list = G.shown || [], CH = W < 560 ? 58 : 0;
-      grid.classList.toggle('capout', W < 560);
-      if (G.limit && !G.expanded && W >= 560) { // justified rows: 3 + 2
-        var rows = [list.slice(0, 3), list.slice(3, 5)], y = 0;
+      grid.classList.toggle('capout', W < 560 && !(G.limit && !G.expanded));
+      if (G.limit && !G.expanded) { // Two full-width rows in relevance order
+        var rows = G.preview || [], y = 0;
         rows.forEach(function (row) {
           if (!row.length) return;
           var sum = 0; row.forEach(function (p) { sum += 1 / ratio(p); });
-          var rh = Math.min((W - gap * (row.length - 1)) / sum, 250), x = 0;
+          var rh = (W - gap * (row.length - 1)) / sum, x = 0;
           row.forEach(function (p) {
-            var c = G.cards[p.id], w = Math.round(rh / ratio(p));
+            var c = G.cards[p.id], w = rh / ratio(p);
             c.style.width = w + 'px'; c.style.height = Math.round(rh) + 'px';
             c.style.transform = 'translate(' + x + 'px,' + y + 'px)'; x += w + gap;
           });
@@ -949,7 +964,7 @@ body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
       sync(); layout();
       if (o.onrender) o.onrender(G);
     }
-    if (global.ResizeObserver) new ResizeObserver(function () { layout(); }).observe(grid);
+    if (global.ResizeObserver) new ResizeObserver(function () { var w = grid.clientWidth; if (G.lastWidth !== w) { G.lastWidth = w; render(); } }).observe(grid);
     else window.addEventListener('resize', layout);
 
     /* ---------- viewer ---------- */
@@ -1055,7 +1070,7 @@ body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}
   function metrics() { document.documentElement.style.setProperty('--nh', nav.offsetHeight + 'px'); }
   window.addEventListener('resize', metrics); metrics();
   function texts() { var t = L[getLang()]; $('pmoretxt').textContent = expanded ? t.col : t.all; $('pfloattxt').textContent = t.col; }
-  G = PGallery.create({ toolbar: $('ptb'), grid: $('pgrid'), empty: $('pempty'), note: $('pnote'), projects: [], limit: 5, getLang: getLang, resolve: function (p) { return p; }, onrender: function (g) { more.hidden = !expanded && g.total <= 5; track(); } });
+  G = PGallery.create({ toolbar: $('ptb'), grid: $('pgrid'), empty: $('pempty'), note: $('pnote'), projects: [], limit: 5, getLang: getLang, resolve: function (p) { return p; }, onrender: function (g) { more.hidden = !expanded && (g.shown || []).length >= g.total; track(); } });
   G.expanded = false;
   fetch('projects.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw 0; return r.json(); })
     .then(function (d) { G.setProjects(d.projects || [], !!d.demo); }).catch(function () { G.setProjects([], false); });
