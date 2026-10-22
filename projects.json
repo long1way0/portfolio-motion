@@ -2,6 +2,50 @@
  "demo": false,
  "projects": [
   {
+   "id": "pmvjyh1chcgp9",
+   "title": {
+    "ru": "Шоурил 2026",
+    "en": "Showreel 2026"
+   },
+   "brief": {
+    "ru": "Задача: создать шоурил, который показывает мои навыки в 2D-motion и объединяет работы в одну визуальную историю.\n\nКинетическая типографика, бумажные разрывы и коллаж сменяются пролётом через карточки проектов. Анимация интерфейсов и переходы связывают примеры работ, блок с инструментами и финальные контакты.\n\nВсю работу выполнил самостоятельно: концепция, дизайн, анимация, монтаж и звук.\n\n3840×2160, 36 сек, 30 fps.",
+    "en": "Brief: create a showreel that showcases my 2D motion design skills and brings my work together in one visual story.\n\nKinetic typography, paper tears and collage lead into a fly-through of project cards. Interface animation and transitions connect the work samples, software showcase and closing contact details.\n\nI handled the entire production: concept, design, animation, editing and audio.\n\n3840×2160, 36 sec, 30 fps."
+   },
+   "tags": [
+    "editing",
+    "motion"
+   ],
+   "skills": [
+    "edit",
+    "sound",
+    "vfx",
+    "concept",
+    "type"
+   ],
+   "types": [
+    "saas",
+    "promo",
+    "social",
+    "visuals",
+    "explainer"
+   ],
+   "tools": [
+    "ae",
+    "ps",
+    "ill",
+    "claude",
+    "codex"
+   ],
+   "format": "horizontal",
+   "w": 3840,
+   "h": 2160,
+   "duration": 35.7,
+   "date": "2026-09",
+   "kind": "video",
+   "src": "media/pmvjyh1chcgp9.mp4",
+   "poster": "media/pmvjyh1chcgp9.jpg"
+  },
+  {
    "id": "pmvgu23i1rtze",
    "title": {
     "ru": "Higgsfield SuperComputer",
